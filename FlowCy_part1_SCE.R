@@ -173,16 +173,16 @@ panel
 # Build md data.frame (metadata)
 file_name <- sample_md$file_name
 tissue <- sample_md$tissue
-condition <- sample_md$condition
+condition <- paste(sample_md$condition, sample_md$tissue, sep = "_")
 patient_id <- sample_md$patient_id
-unique_identifier <- paste(condition, tissue, patient_id, sep = "_")
+unique_identifier <- paste(condition, patient_id, sep = "_")
 sample_id <- unique_identifier
 
 md <- cbind(file_name, sample_id, condition, patient_id)
 md <- data.frame(md)
 md
-md$condition <- factor(md$condition, levels = c("Hyp", "Nor", "NoM"))
-md$sample_id <- factor(md$sample_id, levels = md$sample_id[order(md$condition)])
+md$condition <- factor(md$condition)
+md$sample_id <- factor(md$sample_id)
 
 write.csv(md, file = "metadata.csv", row.names = FALSE)
 write.csv(panel, file = "panel.csv", row.names = FALSE)
