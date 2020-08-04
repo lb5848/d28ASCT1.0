@@ -237,6 +237,8 @@ CATALYST::pbMDS(sce, color_by = "condition", features = type_markers(sce), fun =
 
 plotNRS(sce, features = type_markers(sce), color_by = "condition")
 
+
+rm(sce_tmp)
 # save workspace 
 save(list = ls(), file = "workspaceSCE.rds")
 
